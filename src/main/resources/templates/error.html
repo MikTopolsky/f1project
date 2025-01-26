@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Błąd</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            color: #721c24;
+            text-align: center;
+            padding: 50px;
+        }
+        .error-container {
+            background-color: #f5c6cb;
+            padding: 20px;
+            border: 1px solid #f1b0b7;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        a {
+            color: #004085;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="error-container">
+    <h1>Wystąpił błąd</h1>
+    <p th:text="${errorMessage}">Nieznany błąd.</p>
+    <a href="/drivers">Wróć do strony głównej</a>
+</div>
+</body>
+</html>

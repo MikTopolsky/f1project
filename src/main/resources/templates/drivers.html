@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>F1Wyniki</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<center>
+    <h1>Wyniki wyścigów F1 - Sezon <span th:text="${season}"></span>, Runda <span th:text="${round}"></span>,
+        <span th:text="${raceName}"></span></h1>
+
+    <form action="/drivers" method="get">
+        <label for="season">Sezon:</label>
+        <input type="number" id="season" name="season" th:value="${season}" min="1950" required>
+        <label for="round">Runda</label>
+        <input type="number" id="round" name="round" th:value="${round}" min="1" required>
+
+        <button type="submit">Szukaj</button>
+    </form>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>
+                <a th:href="@{/drivers(season=${season}, round=${round}, sortBy='position')}"><u>Pozycja</u></a>
+            </th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>
+                <a th:href="@{/drivers(season=${season}, round=${round}, sortBy='team')}"><u>Zespół</u></a>
+            </th>
+            <th>Punkty</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="driver : ${drivers}">
+            <td th:text="${driver.position}">Position</td>
+            <td th:text="${driver.firstName}">First Name</td>
+            <td th:text="${driver.lastName}">Last Name</td>
+            <td th:text="${driver.team}">Team</td>
+            <td th:text="${driver.points}">Points</td>
+        </tr>
+        </tbody>
+    </table>
+</center>
+</body>
+</html>
